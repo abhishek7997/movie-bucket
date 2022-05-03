@@ -1,0 +1,60 @@
+<div class="centered-content">
+  <div class="movie-manager-container">
+    <div class="sidebar">
+      <h1 class="title has-text-primary">Users</h1>
+      <div class="user-menu">
+        <a
+          [routerLink]="['/users', user._id]"
+          routerLinkActive="is-active"
+          class="user-menu-item"
+          *ngFor="let user of users"
+        >
+          <p class="white-text user-text">
+            {{ user.title }}
+            <span
+              class="pull-right movie-delete btn-rounded"
+              (click)="deleteuser(user)"
+              ><i class="bi bi-person-dash-fill"></i>
+            </span>
+            <span
+              class="pull-right movie-delete btn-rounded"
+              [routerLink]="['/users', user._id, 'edit-user']"
+              [state]="{ user: user, edit: true }"
+              #editUser
+              (click)="fireEvent($event)"
+              ><i class="bi bi-pencil-fill"></i>
+            </span>
+          </p>
+        </a>
+      </div>
+      <button
+        class="btn btn-primary btn-rounded-corners"
+        routerLink="/new-user"
+      >
+        Add User
+      </button>
+    </div>
+    <div class="movie-user-container">
+      <h1 class="title has-text-primary">Movies</h1>
+      <div
+        class="movie"
+        [class.complete]="movie.completed"
+        *ngFor="let movie of movies"
+        (click)="onmovieClick(movie)"
+      >
+        <p class="white-text">
+          {{ movie.title }}
+          <span
+            class="pull-right movie-delete btn-rounded"
+            (click)="deletemovie(movie)"
+          >
+            <i class="bi bi-trash"></i>
+          </span>
+        </p>
+      </div>
+      <button class="btn btn-primary add-button" (click)="addMovieClick()">
+        Add Movie
+      </button>
+    </div>
+  </div>
+</div>

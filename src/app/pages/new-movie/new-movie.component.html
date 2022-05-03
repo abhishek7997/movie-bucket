@@ -1,0 +1,15 @@
+<div class="centered-content">
+  <div class="modal-box form-group">
+    <h1 class="text-white">Create a new movie</h1>
+    <input
+      #movieInput
+      type="text"
+      class="form-control has-background-light"
+      placeholder="Enter user name"
+    />
+    <button class="btn white-text" routerLink="../">Cancel</button>
+    <button class="btn btn-primary" (click)="addMovie(movieInput.value)">
+      Add
+    </button>
+  </div>
+</div>

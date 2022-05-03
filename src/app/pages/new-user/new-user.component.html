@@ -1,0 +1,22 @@
+<div class="centered-content">
+  <div class="modal-box form-group">
+    <h1 class="text-white">
+      {{ edit ? "Edit username" : "Create a new user" }}
+    </h1>
+    <input
+      #userInput
+      type="text"
+      class="form-control has-background-light"
+      placeholder="Enter user name"
+      style="margin-bottom: 1rem"
+      [value]="edit ? data.user.title : ''"
+    />
+    <button class="btn white-text" routerLink="/">Cancel</button>
+    <button
+      class="btn btn-primary"
+      (click)="edit ? updateUser(userInput.value) : addUser(userInput.value)"
+    >
+      {{ edit ? "Edit" : "Add" }}
+    </button>
+  </div>
+</div>
