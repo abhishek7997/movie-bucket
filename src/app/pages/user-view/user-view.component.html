@@ -12,8 +12,9 @@
           <p class="white-text user-text">
             {{ user.title }}
             <span
+              [routerLink]="['/users', '']"
               class="pull-right movie-delete btn-rounded"
-              (click)="deleteuser(user)"
+              (click)="deleteuser(user, $event)"
               ><i class="bi bi-person-dash-fill"></i>
             </span>
             <span
@@ -28,7 +29,7 @@
         </a>
       </div>
       <button
-        class="btn btn-primary btn-rounded-corners"
+        class="btn btn-primary btn-rounded-corners white-text"
         routerLink="/new-user"
       >
         Add User
@@ -51,8 +52,14 @@
             <i class="bi bi-trash"></i>
           </span>
         </p>
+        <p class="white-text">
+          {{ "Released on " + movie.releaseDate }}
+        </p>
       </div>
-      <button class="btn btn-primary add-button" (click)="addMovieClick()">
+      <button
+        class="btn btn-primary add-button white-text"
+        (click)="addMovieClick()"
+      >
         Add Movie
       </button>
     </div>

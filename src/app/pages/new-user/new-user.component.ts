@@ -26,8 +26,6 @@ export class NewUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
-    console.log(this.edit)
   }
 
   addUser(value: string) {
@@ -35,8 +33,6 @@ export class NewUserComponent implements OnInit {
   }
 
   updateUser(value: string) {
-    console.log(value)
-    console.log(this.userId)
     this.movieService.updateUser(this.userId!, value).subscribe((user: Object) => this.router.navigate(['/users', (user as User)._id]))
   }
 

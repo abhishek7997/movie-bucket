@@ -3,4 +3,5 @@ export default class Movie {
     title!: string;
     _userId!: string;
     completed!: boolean;
+    releaseDate!: string;
 }

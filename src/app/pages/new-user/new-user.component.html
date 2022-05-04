@@ -1,6 +1,6 @@
 <div class="centered-content">
   <div class="modal-box form-group">
-    <h1 class="text-white">
+    <h1 class="white-text">
       {{ edit ? "Edit username" : "Create a new user" }}
     </h1>
     <input
@@ -11,7 +11,9 @@
       style="margin-bottom: 1rem"
       [value]="edit ? data.user.title : ''"
     />
-    <button class="btn white-text" routerLink="/">Cancel</button>
+    <button style="color: white" class="btn white-text" routerLink="/">
+      Cancel
+    </button>
     <button
       class="btn btn-primary"
       (click)="edit ? updateUser(userInput.value) : addUser(userInput.value)"

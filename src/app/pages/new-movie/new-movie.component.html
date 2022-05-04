@@ -1,15 +1,29 @@
 <div class="centered-content">
   <div class="modal-box form-group">
-    <h1 class="text-white">Create a new movie</h1>
+    <h1 class="white-text">Create a new movie</h1>
+    <label for="typeahead-basic" class="white-text">Search for a movie:</label>
     <input
       #movieInput
+      id="typeahead-basic"
       type="text"
       class="form-control has-background-light"
-      placeholder="Enter user name"
+      placeholder="Enter movie name"
+      style="margin-bottom: 1rem"
+      [(ngModel)]="model"
+      [ngbTypeahead]="search"
+      [resultFormatter]="resultFormatBandListValue"
+      [inputFormatter]="inputFormatBandListValue"
+      (selectItem)="selectItem($event)"
     />
-    <button class="btn white-text" routerLink="../">Cancel</button>
-    <button class="btn btn-primary" (click)="addMovie(movieInput.value)">
-      Add
+    <br />
+    <div *ngIf="selectedMovie">
+      <p *ngIf="selectedMovie" class="white-text">
+        Release Date : {{ selectedMovie.release_date }}
+      </p>
+    </div>
+    <button style="color: white" class="btn white-text" routerLink="../">
+      Cancel
     </button>
+    <button class="btn btn-primary white-text" (click)="addMovie()">Add</button>
   </div>
 </div>

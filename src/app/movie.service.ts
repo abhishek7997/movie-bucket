@@ -22,8 +22,8 @@ export class MovieService {
     return this.webService.get(`users/${userId}/movies`)
   }
 
-  createMovie(userId: string, title: string) {
-    return this.webService.post(`users/${userId}/movies`, { title })
+  createMovie(userId: string, title: string, releaseDate: string) {
+    return this.webService.post(`users/${userId}/movies`, { title, releaseDate })
   }
 
   deleteUser(userId: string) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params, Event } from '@angular/router';
 import Movie from 'src/app/models/movie';
 import User from 'src/app/models/user';
 import { MovieService } from 'src/app/movie.service';
@@ -21,7 +21,6 @@ export class UserViewComponent implements OnInit {
 
     this.route.params.subscribe((param: Params) => {
       this.userId = param['userId'];
-      console.log("userID: ", this.userId)
       if (!this.userId) return
 
       this.movieService.getMovies(this.userId).subscribe((movies: Object) => this.movies = movies as Movie[])
@@ -33,11 +32,13 @@ export class UserViewComponent implements OnInit {
   }
 
   deletemovie(movie: Movie) {
-    this.movieService.deleteMovie(this.userId, movie._id).subscribe((movie: Object) => this.movies = this.movies.filter(t => t._id != (movie as Movie)._id));
+    this.movieService.deleteMovie(this.userId, movie._id).subscribe((movie: Object) => this.movies = this.movies.filter(t => t._id != (movie as Movie)._id))
   }
 
-  deleteuser(user: User) {
+  deleteuser(user: User, event: any) {
+    event.stopImmediatePropagation()
     this.movieService.deleteUser(user._id).subscribe(() => this.users = this.users.filter(U => U._id != user._id))
+    window.location.reload();
   }
 
   addMovieClick() {
@@ -56,7 +57,6 @@ export class UserViewComponent implements OnInit {
   fireEvent(e: any) {
     e.stopImmediatePropagation();
     // e.preventDefault();
-    console.log('click inside input');
     return false;
   }
 }
