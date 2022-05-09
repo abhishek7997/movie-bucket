@@ -24,6 +24,11 @@
     <button style="color: white" class="btn white-text" routerLink="../">
       Cancel
     </button>
-    <button class="btn btn-primary white-text" (click)="addMovie()">Add</button>
+    <button
+      class="btn btn-primary white-text"
+      (click)="addMovie(movieInput.value)"
+    >
+      Add
+    </button>
   </div>
 </div>

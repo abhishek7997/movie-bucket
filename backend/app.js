@@ -68,8 +68,10 @@ app.delete("/users/:userId", (req, res) => {
       .catch((error) => console.log(error));
   };
   const User = user
-    .findOneAndDelete(req.params.userId)
-    .then((usr) => res.send(deletemovies(usr)))
+    .findOneAndDelete({ _id: req.params.userId })
+    .then((usr) => {
+      res.send(deletemovies(usr));
+    })
     .catch((error) => console.log(error));
 });
 

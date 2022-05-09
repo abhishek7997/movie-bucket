@@ -34,10 +34,14 @@ export class NewMovieComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addMovie() {
-    if (!this.selectedMovie)
+  addMovie(userInput: string) {
+    if (!this.selectedMovie && !userInput)
       return
-    this.movieService.createMovie(this.userId, this.selectedMovie.title, this.selectedMovie.release_date).subscribe(() => this.router.navigate(['../'], { relativeTo: this.route }))
+
+    if (this.selectedMovie)
+      this.movieService.createMovie(this.userId, this.selectedMovie.title, this.selectedMovie.release_date ?? "").subscribe(() => this.router.navigate(['../'], { relativeTo: this.route }))
+    else if (userInput)
+      this.movieService.createMovie(this.userId, userInput, "").subscribe(() => this.router.navigate(['../'], { relativeTo: this.route }))
   }
 
   async getVideoList(term: string) {

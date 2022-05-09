@@ -38,7 +38,7 @@ export class UserViewComponent implements OnInit {
   deleteuser(user: User, event: any) {
     event.stopImmediatePropagation()
     this.movieService.deleteUser(user._id).subscribe(() => this.users = this.users.filter(U => U._id != user._id))
-    window.location.reload();
+    // window.location.reload();
   }
 
   addMovieClick() {

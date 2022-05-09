@@ -12,7 +12,6 @@
           <p class="white-text user-text">
             {{ user.title }}
             <span
-              [routerLink]="['/users', '']"
               class="pull-right movie-delete btn-rounded"
               (click)="deleteuser(user, $event)"
               ><i class="bi bi-person-dash-fill"></i>
@@ -52,7 +51,7 @@
             <i class="bi bi-trash"></i>
           </span>
         </p>
-        <p class="white-text">
+        <p *ngIf="movie.releaseDate != ''" class="white-text">
           {{ "Released on " + movie.releaseDate }}
         </p>
       </div>
