@@ -10,7 +10,8 @@
           *ngFor="let user of users"
         >
           <p class="white-text user-text">
-            {{ user.title }}
+            {{ user.title }}<br />
+            {{ user._id }}
             <span
               class="pull-right movie-delete btn-rounded"
               (click)="deleteuser(user, $event)"
